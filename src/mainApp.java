@@ -31,6 +31,8 @@ public class mainApp {
 
 		
 	}
+	
+	//done this
 
 	
 	//shuffles the dataset by swapping each row with another chosen randomly each time
