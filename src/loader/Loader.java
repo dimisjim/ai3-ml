@@ -8,12 +8,14 @@ import java.io.IOException;
 import java.util.StringTokenizer;
 
 public class Loader {
-	public static double[][] X;
-	public static double[] Y1;
-	public static double[] Y2;
+	
+	private double[] Y1;
+	private double[] Y2;
+	private double[][] X;
+	
 	
 	//returns the number m of training examples inputed by the user
-	public static int fileloaderDataLineCounter(String filename) {
+	public int fileloaderDataLineCounter(String filename) {
 		int lineCounter = 1;
 
         File f = null;
@@ -60,7 +62,7 @@ public class Loader {
 
 	
 	//read dataset and initialize the X and Y vectors (arrays)
-	public static void fileloaderData(String filename, int m) {
+	public void fileloaderData(String filename, int m) {
 		
 		
 		X = new double[m][6];
@@ -151,7 +153,7 @@ public class Loader {
 	
 	
 	//prints the inputed dataset
-	public static void testPrintDataset(int m) {
+	public void testPrintDataset(int m, double[][] X, double[] Y1, double[] Y2) {
 
 		System.out.println("Number of training examples: " + m);
 		for (int i=0; i<120; i++) {
@@ -175,6 +177,28 @@ public class Loader {
 		}
 
 		
+	}
+
+
+	
+	
+	
+	
+	
+	
+	
+	public double[] getY1() {
+		return Y1;
+	}
+
+
+	public double[] getY2() {
+		return Y2;
+	}
+
+
+	public double[][] getX() {
+		return X;
 	}
 	
 }
