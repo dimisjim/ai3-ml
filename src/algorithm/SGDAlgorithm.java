@@ -5,6 +5,12 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class SGDAlgorithm {
 	
+	//Stochastic Gradient Descent/Ascent steps:
+	//1) shuffle dataset (done with the shuffleDataset method)
+	//2) choose parameter vector theta, such that objective function j(theta) is minimized
+	
+	
+	
 	//theta is 6 parameters +1 size = 7
 	private double[] theta = {0,0,0,0,0,0,0};
 	private double[] finalTheta = {0,0,0,0,0,0,0};
@@ -41,6 +47,12 @@ public class SGDAlgorithm {
 	}
 	
 
+	
+	
+	
+	
+	//The following three methods are used to represent the J(theta) objective function
+	
 	//hypothesis function
 	public double sigmoidHypothesis(int i, double[] Theta, double[][] X) {
 		double thetaTx = Theta[0]*1 + X[i][0]*Theta[1] + X[i][1]*Theta[2] + X[i][2]*Theta[3] + 
@@ -67,6 +79,11 @@ public class SGDAlgorithm {
 		
 		return sum/m;
 	}
+	
+	
+	
+	
+	
 	
 	
 	//Stochastic Gradient Descent Algorithm
@@ -123,7 +140,7 @@ public class SGDAlgorithm {
 	}
 	
 	
-	
+	//used for updating theta vector
 	public void updateTheta(double[] thetaCopy){
 		
 		for (int j=0; j<theta.length; j++){
@@ -134,7 +151,7 @@ public class SGDAlgorithm {
 		
 	}
 	
-	
+	//used for temporarily saving the theta vector of a new minimum J(theta) value found
 	public void chosenTheta(){
 		
 		for (int j=0; j<theta.length; j++){
@@ -146,7 +163,12 @@ public class SGDAlgorithm {
 	}
 	
 	
-	//hypothesis function, to be used to for new predictions, based on newly inputed data
+	
+	
+	
+	
+	
+	//hypothesis function, to be used for new predictions, based on newly inputed data
 	public double finalSigmoidHypothesis(double[] Theta, double[] input) {
 		double thetaTx = Theta[0]*1 + input[0]*Theta[1] + input[1]*Theta[2] + input[2]*Theta[3] + 
 				input[3]*Theta[4] + input[4]*Theta[5] + input[5]*Theta[6];

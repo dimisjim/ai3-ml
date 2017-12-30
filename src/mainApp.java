@@ -151,7 +151,7 @@ public class mainApp {
 		double prediction1 = sgd1.finalSigmoidHypothesis(sgd1.getFinalTheta(), input);
 		double prediction2 = sgd2.finalSigmoidHypothesis(sgd2.getFinalTheta(), input);
 		System.out.println("\nBased on the attributes inserted, patient has a " + df2.format(prediction1*100) 
-				+ "% chance of having inflammation of the urinary bladder and\n"
+				+ "% chance of having inflammation of the urinary bladder\n and"
 				+ df2.format(prediction2*100) + "% chance of having Nephritis of renal pelvis origin.");
 		
 	}

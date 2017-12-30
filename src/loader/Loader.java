@@ -13,6 +13,9 @@ public class Loader {
 	private double[] Y2;
 	private double[][] X;
 	
+	public double[] getY1() {return Y1;}
+	public double[] getY2() {return Y2;}
+	public double[][] getX() {return X;}
 	
 	//returns the number m of training examples inputed by the user
 	public int fileloaderDataLineCounter(String filename) {
@@ -181,24 +184,6 @@ public class Loader {
 
 
 	
-	
-	
-	
-	
-	
-	
-	public double[] getY1() {
-		return Y1;
-	}
 
-
-	public double[] getY2() {
-		return Y2;
-	}
-
-
-	public double[][] getX() {
-		return X;
-	}
 	
 }
