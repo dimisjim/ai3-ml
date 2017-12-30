@@ -3,7 +3,7 @@ package algorithm;
 import java.util.concurrent.ThreadLocalRandom;
 
 
-public class SGDAlgorithm {
+public class SGAlgorithm {
 	
 	//Stochastic Gradient Descent/Ascent steps:
 	//1) shuffle dataset (done with the shuffleDataset method)
@@ -21,7 +21,7 @@ public class SGDAlgorithm {
 
 
 	//shuffles the dataset by swapping each row with another chosen randomly each time
-	public void shuffleDataset(int m, double[] Y1, double[] Y2, double[][] X) {
+	public static void shuffleDataset(int m, double[] Y1, double[] Y2, double[][] X) {
 		
 		for (int i = 0; i<m; i++) {
 			
@@ -84,7 +84,59 @@ public class SGDAlgorithm {
 	
 	
 	
-	
+	//Stochastic Gradient Ascent Algorithm
+	public double SGA(double alpha, int m, double[] Y, double[][] X){
+		
+		int n = theta.length;
+		double[] thetaCopy = new double[n];
+		
+		System.out.println("Initial value of vector theta: " + theta[0] +" " + theta[1] +" " + 
+				theta[2] +" " + theta[3] +" " + theta[4] +" " + theta[5] +" " + theta[6]);
+		System.out.println("Initial Value of J(theta): " + JofTheta(m, theta, Y, X));
+		
+		double maxValue = JofTheta(m, theta, Y, X);
+		
+		for (int r=0; r<1000; r++){
+			
+			for (int i=0; i<m; i++){
+				
+				for (int j=0; j<n; j++){
+					
+					if (j==0){
+						thetaCopy[j] = theta[j] + alpha*(sigmoidHypothesis(i, theta, X) - Y[i])*1;
+					}
+					else{
+						thetaCopy[j] = theta[j] + alpha*(sigmoidHypothesis(i, theta, X) - Y[i])*X[i][j-1];
+					}
+					
+					
+				}
+				
+				updateTheta(thetaCopy);
+				
+				
+				
+				
+				if(JofTheta(m, theta, Y, X)>maxValue){
+					maxValue = JofTheta(m, theta, Y, X);
+					//System.out.println(minValue);
+					chosenTheta();
+				}
+				//System.out.println(JofTheta(m));
+				//System.out.println(theta[0] +" " + theta[1] +" " + theta[2] +" " + theta[3] +" " + theta[4] +" " + theta[5] +" " + theta[6]);
+				
+			}
+			
+		}
+		
+		System.out.println("Final value of vector theta: " + finalTheta[0] +" " + finalTheta[1] +" " + 
+				finalTheta[2] +" " + finalTheta[3] +" " + finalTheta[4] +" " + finalTheta[5] +" " + finalTheta[6]);
+		System.out.println("Final value of J(theta): " + JofTheta(m, finalTheta, Y, X));
+		
+		return JofTheta(m, finalTheta, Y, X);
+		
+	}
+		
 	
 	//Stochastic Gradient Descent Algorithm
 	public double SGD(double alpha, int m, double[] Y, double[][] X){
@@ -98,7 +150,7 @@ public class SGDAlgorithm {
 		
 		double minValue = JofTheta(m, theta, Y, X);
 		
-		for (int r=0; r<10; r++){
+		for (int r=0; r<1000; r++){
 			
 			for (int i=0; i<m; i++){
 				
@@ -161,7 +213,6 @@ public class SGDAlgorithm {
 		}
 		
 	}
-	
 	
 	
 	
