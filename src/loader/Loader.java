@@ -13,9 +13,17 @@ public class Loader {
 	private double[] Y2;
 	private double[][] X;
 	
+	private double[] Y1test;
+	private double[] Y2test;
+	private double[][] Xtest;
+	
 	public double[] getY1() {return Y1;}
 	public double[] getY2() {return Y2;}
 	public double[][] getX() {return X;}
+	
+	public double[] getY1test() {return Y1test;}
+	public double[] getY2test() {return Y2test;}
+	public double[][] getXtest() {return Xtest;}
 	
 	//returns the number m of training examples inputed by the user
 	public int fileloaderDataLineCounter(String filename) {
@@ -159,7 +167,7 @@ public class Loader {
 	public void testPrintDataset(int m, double[][] X, double[] Y1, double[] Y2) {
 
 		System.out.println("Number of training examples: " + m);
-		for (int i=0; i<120; i++) {
+		for (int i=0; i<m; i++) {
 			System.out.println("Traning Example: "+ (i+1));
 			System.out.print(X[i][0]);
 			System.out.print(" ");
@@ -184,6 +192,23 @@ public class Loader {
 
 
 	
-
+	public void buildTestSet(int m, int n, double[][] X, double[] Y1, double[] Y2){
+		
+		Y1test = new double[n-m];
+		Y2test = new double[n-m];
+		Xtest = new double[n-m][6];
+		
+		int b=0;
+		for(int a=m; a<n; a++){
+			Y1test[b] = Y1[a];
+			Y2test[b] = Y2[a];
+			
+			for(int j=0; j<6; j++){
+				Xtest[b][j] = X[a][j];
+			}
+			
+			b++;
+		}
+	}
 	
 }

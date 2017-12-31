@@ -25,7 +25,7 @@ public class SGAlgorithm {
 		
 		for (int i = 0; i<m; i++) {
 			
-			int randomI = ThreadLocalRandom.current().nextInt(0, 119 + 1);
+			int randomI = ThreadLocalRandom.current().nextInt(0, m);
 			double temp = Y2[randomI];
 			Y2[randomI] = Y2[i];
 			Y2[i] = temp;
@@ -227,5 +227,6 @@ public class SGAlgorithm {
 		
 		return (1/( 1 + Math.pow(Math.E,(-thetaTx))));
 	}
+
 
 }
